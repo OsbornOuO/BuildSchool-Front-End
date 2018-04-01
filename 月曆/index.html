@@ -6,7 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
@@ -18,8 +19,7 @@
         }
 
         button:hover {
-            background-color: #ee7d8e !important;
-            color: white;
+            color: #ee7d8e !important
         }
 
         .badge-sm {
@@ -29,28 +29,38 @@
         .list-sm {
             font-size: 12px;
         }
+
+        .model-top-button {
+            font-size: 20px;
+            background-color: #FFFFFF;
+            font-weight: bold;
+            border-style: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid text-center">
         <div class="row mt-3">
-            <div class="col-1">
-                <select class="form-control" id="yearlist" style="color:#ee7d8e;font-size:20px;border-style:none; width:100px;" onchange=ChangeData()>
+            <div class="col-2 pl-5">
+                <select class="form-control" id="yearlist" style="color:#ee7d8e;font-size:20px;border-style:none;" onchange=ChangeData()>
+
+                </select>
+            </div>
+            <div class="col-3 pl-5 pr-4">
+                <select class="form-control" id="monthlist" style="color:#e98b99;font-size:20px; border-style:none;" onchange=ChangeData()>
 
                 </select>
             </div>
             <div class="col-1">
-                <select class="form-control" id="monthlist" style="color:#e98b99;font-size:20px; border-style:none;width:100px;" onchange=ChangeData()>
+                <select class="form-control" id="datelist" style="color:#f0a0ac;font-size:20px; border-style:none;" onchange=ChangeData()>
 
                 </select>
             </div>
-            <div class="col-1">
-                <select class="form-control" id="datelist" style="color:#f0a0ac;font-size:20px; border-style:none;width:100px;" onchange=ChangeData()>
-
-                </select>
-            </div>
-            <div class="col-6">
+            <div class="col text-right">
+                <button type="button" class="btn" style="font-size:20px;background:white" data-toggle="modal" data-target="#ChooseMode">
+                    <i class="fas fa-plus" style=" color: #ee687b;"></i>
+                </button>
             </div>
         </div>
         <div class="row mt-3">
@@ -111,6 +121,97 @@
             </div>
         </div>
     </div>
+    <div class="modal fade bd-example-modal-sm" id="ChooseMode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col">
+                        <button class="model-top-button" data-dismiss="modal" aria-label="Close" style="color:#FF0000">
+                            <b>取消</b>
+                        </button>
+                    </div>
+                    <div class="col text-center">
+                        <h5 class="modal-title" style="font-weight:bold">新增行程</h5>
+                    </div>
+                    <div class="col text-right">
+                        <button class="model-top-button" class="btn" style="background-color:#FFFFFF" onclick="Createschedule()">
+                            新增
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body  ml-3 mr-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control"id="input_something" aria-describedby="helpId" placeholder="標題">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                                    <span>
+                                        <b> 行程日期</b>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="Model-yearlist" style="font-size:15px;width:100px; border-style:none;"></select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="Model-monthlist" style="font-size:15px;width:115px; border-style:none;" onchange="ChangeMdate()"></select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="Model-datelist" style="font-size:15px;width:65px; border-style:none;"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                                    <span>
+                                        <b>顏色</b>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <select style="border-style:none" class="form-control" id="input_color">
+                                        <option value="">None</option>
+                                        <option value="list-group-item-primary">藍</option>
+                                        <option value="list-group-item-success">綠</option>
+                                        <option value="list-group-item-danger">紅</option>
+                                        <option value="group-item-warning">黃</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                                    <span>
+                                        <b> 行程日期</b>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input class="form-control" id="input_fromHr" placeholder="輸入起始時間">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                                    <span>
+                                        <b> 行程日期</b>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input class="form-control" id="input_toHr" placeholder="輸入結束時間">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -134,7 +235,7 @@
             month: "",
             item: []
         };
-        Createschedule();
+
         month[0] = "January"
         month[1] = "February"
         month[2] = "March"
@@ -149,41 +250,50 @@
         month[11] = "December"
 
         function Createschedule() {
-            // var _fromHr = document.getElementById("input_fromHr").value;
-            // var _toHr = document.getElementById("input_toHr").value;
-            // var _color = document.getElementById("input_color").value;
-            // var _day = document.getElementById("input_day").value;
-            // var _month = document.getElementById("input_month").value;
-            // var _year = document.getElementById("input_year").value;
-
-            var _fromHr = "9:00";
-            var _toHr = "10:00";
-            var _color = "list-group-item-success";
-            var _day = "1";
 
             var YearItem = yearSchedule;
             //有問題     var YearItem = Object.create(yearSchedule);
             var Nowitem = Object.create(scheduleItem);
-            var _month = "3";
-            var _year = "2018"
+            var _fromHr = document.getElementById("input_fromHr").value;
+            var _toHr = document.getElementById("input_toHr").value;
+            var _color = " " + document.getElementById("input_color").value + " ";
+            var _day = document.getElementById("Model-datelist").value;
+            var _month = document.getElementById("Model-monthlist").value;
+            var _year = document.getElementById("Model-yearlist").value;
+            var _something = document.getElementById("input_something").value;
 
+            // var _fromHr = "9:00";
+            // var _toHr = "10:00";
+            // var _color = " bg-danger text-white ";
+            // var _day = "1";
+
+            // var _month = "3";
+            // var _year = "2018"
+ //           console.log(_fromHr+" "+_toHr+" "+_color+" "+_day+" "+_month+" "+_year);
             Nowitem.day = _day;
             Nowitem.fromHr = _fromHr //輸入起頭時間
             Nowitem.toHr = _toHr; //輸入結束時間
             Nowitem.color = _color; //選擇色彩
-            Nowitem.something = "Fuckyoubitch";
-
-            if (localStorage.getItem(_year.toString() + _month.toString()) === null) {
+            Nowitem.something =  _something;
+            localStorage.clear();
+            console.log(localStorage);
+            if (localStorage.getItem(_year.toString() + _month.toString()) == null) {
+                console.log("是null");
                 YearItem.year = _year; //選擇年份
                 YearItem.month = _month; //選擇月份
                 YearItem.item.push(Nowitem);
-                localStorage.setItem(_year.toString() + _month.toString(), YearItem)
+                localStorage.setItem(_year.toString() + _month.toString(), JSON.stringify(YearItem));
             } else {
+                console.log("不是null");
                 var tmp = JSON.parse(localStorage.getItem(_year.toString() + _month.toString()));
                 tmp.item.push(Nowitem);
                 localStorage.setItem(_year.toString() + _month.toString(), JSON.stringify(tmp));
             }
-            console.log(JSON.parse(localStorage.getItem(_year.toString() + _month.toString())))
+            console.log(JSON.parse(localStorage.getItem(_year.toString() + _month.toString())));
+            f = new Date(d.getFullYear(), d.getMonth(), 1)
+            start = new Date(d.getFullYear(), d.getMonth());
+            start = getStart(start);
+            CreateList();
         }
 
 
@@ -202,35 +312,43 @@
 
         function CreateYear() {
             for (var i = 1950; i < 2040; i++) {
-                var item = document.createElement("option");
+                var item = document.createElement("option"); // 問題
+                var item2 = document.createElement("option");
                 if (i == d.getFullYear()) {
                     item.selected = true;
+                    item2.selected = true;
                 }
+                item2.innerText = i;
+                item2.value = i;
                 item.innerText = i;
                 item.value = i;
                 item.style = "color:#ee7d8e";
                 document.getElementById("yearlist").appendChild(item);
+                document.getElementById("Model-yearlist").appendChild(item2);
             }
         }
-
         function CreateMonth() {
             for (var i = 0; i < month.length; i++) {
                 var item = document.createElement("option");
+                var item2 = document.createElement("option");
                 if (i == d.getMonth()) {
                     item.selected = true;
                 }
                 item.innerText = month[i];
                 item.value = i;
                 item.style = "color:#ee7d8e";
+                item2.innerText = month[i];
+                item2.value = i;
                 document.getElementById("monthlist").appendChild(item);
+                document.getElementById("Model-monthlist").appendChild(item2);
             }
         }
-
-        function CreateDate() {
-            document.getElementById("datelist").innerHTML = "";
-            var year = document.getElementById("yearlist").value;
-            var month = document.getElementById("monthlist").value;
-            var tmp = new Date(year, (parseInt(month) + 1), 0).getDate();
+        function ChangeMdate()
+        {
+            document.getElementById("Model-datelist").innerHTML="";
+            var _year = document.getElementById("Model-yearlist").value;
+            var _month = document.getElementById("Model-monthlist").value;
+            var tmp = new Date(_year,(parseInt(_month)+1),0).getDate();
             for (var i = 1; i <= tmp; i++) {
                 var item = document.createElement("option");
                 if (i == d.getDate()) {
@@ -238,8 +356,27 @@
                 }
                 item.innerText = i;
                 item.value = i;
+                document.getElementById("Model-datelist").appendChild(item);
+            }
+        }
+        function CreateDate() {
+            document.getElementById("datelist").innerHTML = "";
+            var year = document.getElementById("yearlist").value;
+            var month = document.getElementById("monthlist").value;
+            var tmp = new Date(year, (parseInt(month) + 1), 0).getDate();
+            for (var i = 1; i <= tmp; i++) {
+                var item = document.createElement("option");
+                var item2 = document.createElement("option");
+                if (i == d.getDate()) {
+                    item.selected = true;
+                }
+                item.innerText = i;
+                item.value = i;
+                item2.innerText = i;
+                item2.value = i;
                 item.style = "color:#ee7d8e";
                 document.getElementById("datelist").appendChild(item);
+                document.getElementById("Model-datelist").appendChild(item2);
             }
         }
         window.onload = function () {
@@ -267,14 +404,15 @@
             listItemul.style = "height:100px;"
             itemli.className = "list-group-item list-sm";
             itemli.style = "padding:5px;margin:5px ;color:black; border-style:none";
-            itemSp.className = "badge-dark badge-pill badge-sm mr-2";
+            itemSp.className = "badge-light badge-pill badge-sm mr-2";
             if (localStorage.getItem(year.toString() + month.toString()) != null) {
                 var retrievedObject = JSON.parse(localStorage[year.toString() + month.toString()]).item;
                 for (var i in retrievedObject) {
                     if (retrievedObject[i].day == day) {
-                        console.log("??");
-                        itemli.className += " list-group-item-success ";
-                        itemSp.innerHTML = "<i>" + retrievedObject[i].fromHr.toString() + "-" + retrievedObject[i].toHr
+                        console.log(retrievedObject[i].color);
+                        itemli.className += retrievedObject[i].color;
+                        itemSp.innerHTML = "<i>" + retrievedObject[i].fromHr.toString() + "-" + retrievedObject[
+                                i].toHr
                             .toString() + "</i>"
                         itemli.appendChild(itemSp);
                         itemli.innerHTML += "<br>" + retrievedObject[i].something.toString();
