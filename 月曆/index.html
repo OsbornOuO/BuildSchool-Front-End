@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        button:hover {
+            background-color: #ee687b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="row mt-3">
+            <div class="col-2">
+                <select class="form-control" id="yearlist" style="color:#ee7d8e;font-size:15px;border-style:none; width:100px;" onchange=ChangeData()>
+
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-control" id="monthlist" style="color:#e98b99;font-size:15px; border-style:none;width:100px;" onchange=ChangeData()>
+
+                </select>
+            </div>
+            <div class="col-1">
+                <select class="form-control" id="datelist" style="color:#f0a0ac;font-size:15px; border-style:none;width:100px;" onchange=ChangeData()>
+
+                </select>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-1">
+                <button id="left" type="button" class="btn" style="background-color:white">
+                    <i style="color:#ee687b;" class="fas fa-angle-left fa-3x"></i>
+                </button>
+            </div>
+            <div class="col" style="color:#ee687b; font-size:30px;">
+                <b>
+                    <span id="year" style="font-size:30px;"></span>
+                </b>
+                /
+                <b>
+                    <span id="month" style="font-size:30px;" class="ml-2 mr-2"></span>
+                </b>
+                /
+                <span id="date" style="font-size:30px;"></span>
+            </div>
+            <div class="col-1">
+                <button id="right" type="button" class="btn" style="background-color:white">
+                    <i style="color:#ee687b;" class="fas fa-angle-right fa-3x"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-5" style="color:#ee687b">
+            <div class="col">
+                MON
+            </div>
+            <div class="col">
+                TUE
+            </div>
+            <div class="col">
+                WED
+            </div>
+            <div class="col">
+                THU
+            </div>
+            <div class="col">
+                FRI
+            </div>
+            <div class="col">
+                SAT
+            </div>
+            <div class="col">
+                SUN
+            </div>
+        </div>
+        <div id="list" class="mt-3">
+        </div>
+        <div class="mt-3">
+            <div class="row">
+                <div class="col" type="d" style="border:#e9e9e9 solid 1px; background-color:#ed4f69">
+                    <button class="btn">1234</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var d, f, start;
+        var month = new Array(12);
+        var scheduleItem = {
+            day:"" , fromHr: "", toHr: "", color: "",something:""
+        };
+        var yearSchedule = {
+            year: "",
+            month: "",
+            item : new Array()
+        };
+        Createschedule();
+        month[0] = "January"
+        month[1] = "February"
+        month[2] = "March"
+        month[3] = "April"
+        month[4] = "May"
+        month[5] = "June"
+        month[6] = "July"
+        month[7] = "August"
+        month[8] = "September"
+        month[9] = "October"
+        month[10] = "November"
+        month[11] = "December"
+        function Createschedule() {
+            // var _fromHr = document.getElementById("input_fromHr").value;
+            // var _toHr = document.getElementById("input_toHr").value;
+            // var _color = document.getElementById("input_color").value;
+            // var _day = document.getElementById("input_day").value;
+            // var _month = document.getElementById("input_month").value;
+            // var _year = document.getElementById("input_year").value;
+
+            var _fromHr = "9:00";
+            var _toHr = "10:00";
+            var _color = "Black";
+            var _day = "31";
+            var _month = "3";
+            var _year = "2018"
+
+            var Nowitem = scheduleItem;
+            var YearItem = yearSchedule;
+
+            Nowitem.day = _day;
+            Nowitem.fromHr = _fromHr//輸入起頭時間
+            Nowitem.toHr = _toHr; //輸入結束時間
+            Nowitem.color = _color;  //選擇色彩
+            Nowitem.something ="Fuckyoubich";
+
+            YearItem.year = _year; //選擇年份
+            YearItem.month = _month; //選擇月份
+            YearItem.item.push(Nowitem);
+
+            localStorage.setItem("20183", JSON.stringify(YearItem));
+            if (localStorage.getItem(_year.toString() + _month.toString()) != null) {
+                var retrievedObject = JSON.parse(localStorage[YearItem.year.toString() + YearItem.month.toString()]).item;
+                for (var i in retrievedObject) {
+                    for(var j in retrievedObject[i])
+                    {
+                        console.log(retrievedObject[i][j]);
+                    }
+                }
+            }
+        }
+        function GetItem(searchDate)
+        {
+            
+        }
+        function ChangeData() {
+            var _y = document.getElementById("yearlist").value;
+            var _m = document.getElementById("monthlist").value;
+            var _d = document.getElementById("datelist").value;
+            d = new Date(_y, _m, _d);
+            f = new Date(d.getFullYear(), d.getMonth(), 1)
+            start = new Date(d.getFullYear(), d.getMonth(), f.getDate() - f.getDay() + 1);
+            console.log(d.getFullYear() + " " + d.getMonth() + " " + d.getDate() + "??");
+            CreateDate();
+            CreateList();
+        }
+        function CreateYear() {
+            for (var i = 1950; i < 2040; i++) {
+                var item = document.createElement("option");
+                if (i == d.getFullYear()) {
+                    item.selected = true;
+                }
+                item.className = "text-center";
+                item.innerText = i;
+                item.value = i;
+                item.style = "color:#ee7d8e";
+                document.getElementById("yearlist").appendChild(item);
+            }
+        }
+        function CreateMonth() {
+            for (var i = 0; i < month.length; i++) {
+                var item = document.createElement("option");
+                if (i == d.getMonth()) {
+                    item.selected = true;
+                }
+                item.className = "text-center";
+                item.innerText = month[i];
+                item.value = i;
+                item.style = "color:#ee7d8e";
+                document.getElementById("monthlist").appendChild(item);
+            }
+        }
+        function CreateDate() {
+            document.getElementById("datelist").innerHTML = "";
+            var year = document.getElementById("yearlist").value;
+            var month = document.getElementById("monthlist").value;
+            var tmp = new Date(year, (parseInt(month) + 1), 0).getDate();
+            for (var i = 1; i <= tmp; i++) {
+                var item = document.createElement("option");
+                if (i == d.getDate()) {
+                    console.log(i);
+                    item.selected = true;
+                }
+                item.className = "text-center";
+                item.innerText = i;
+                item.value = i;
+                item.style = "color:#ee7d8e";
+                document.getElementById("datelist").appendChild(item);
+            }
+        }
+        window.onload = function () {
+            d = new Date();
+            f = new Date(d.getFullYear(), d.getMonth(), 1)
+            start = new Date(d.getFullYear(), d.getMonth(), f.getDate() - f.getDay() + 1);
+            console.log(d.getFullYear() + " " + d.getMonth() + " " + d.getDate() + "??");
+            CreateYear();
+            CreateMonth();
+            CreateDate();
+            CreateList();
+        }
+        function CreateList() {
+            document.getElementById("list").innerHTML = "";
+            for (var j = 0; j < 6; j++) {
+                var row = document.createElement("div");
+                row.className = "row mt-0 mb-0";
+                for (var i = 0; i < 7; i++) {
+                    var col = document.createElement("div");
+                    var button = document.createElement("button");
+                    button.className = "btn btn-block";
+                    col.className = "col pt-3 pb-3";
+                    if (d.getMonth() != start.getMonth()) {
+                        button.style = "border:#e9e9e9 solid 1px; color:#d0d1d5";
+                    }
+                    else {
+                        if (d.getDate() == start.getDate()) {
+                            button.style = "border:#e9e9e9 solid 1px; background-color:#ed4f69";
+                        }
+                        else {
+                            button.style = "border:#e9e9e9 solid 1px;";
+                        }
+                    }
+                    button.innerText = start.getDate();
+                    col.appendChild(button);
+                    start.setDate(start.getDate() + 1);
+                    row.appendChild(col);
+                }
+                document.getElementById("list").appendChild(row);
+            }
+            document.getElementById("year").innerText = d.getFullYear();
+            document.getElementById("month").innerText = month[d.getMonth()];
+            document.getElementById("date").innerText = d.getDate();
+        };
+        document.getElementById("left").onclick = function () {
+            document.getElementById("list").innerHTML = "";
+            d.setMonth(d.getMonth() - 1);
+            f = new Date(d.getFullYear(), d.getMonth(), 1);
+            start = new Date(d.getFullYear(), d.getMonth());
+            start.setDate(f.getDate() - f.getDay() + 1);
+            CreateList();
+        };
+        document.getElementById("right").onclick = function () {
+            d.setMonth(d.getMonth() + 1);
+            f = new Date(d.getFullYear(), d.getMonth(), 1);
+
+            start = new Date(d.getFullYear(), d.getMonth());
+            start = getStart(start);
+            CreateList();
+        };
+        function getStart(tmp) {
+            while (tmp.getDay() != 1) {
+                tmp.setDate(tmp.getDate() - 1);
+            }
+            return tmp;
+        };
+    </script>
+</body>
+
+</html>

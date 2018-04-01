@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col offset-3">
+                <button id="start" type="button" class="btn btn-success btn-block">開始</button>
+            </div>
+            <div class="col">
+                <button id="giveup" type="button" class="btn btn-danger btn-block">放棄重來</button>
+            </div>
+            <div class="col">
+                <button id="see" type="button" class="btn btn-dark btn-block">看答案</button>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col offset-3">
+                <ul id="list" class="list-group" style="height:300px;">
+                </ul>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">猜答案</span>
+                    </div>
+                    <input id="anstext" type="text" class="form-control" placeholder="輸入四個數字" aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="input-group-prepend">
+                        <button id="guess" class="btn btn-success" type="button">猜</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var num = "";
+        document.getElementById("see").onclick = function getAns() {
+            alert("答案是:" + num);
+            giveup();
+        }
+        document.getElementById("start").onclick = function getStart() {
+            for (var i = 0; i < 4;) {
+                var tmp = Math.floor(Math.random() * 10);
+                if (!num.includes(tmp)) {
+                    num += tmp;
+                    i++;
+                }
+            }
+            this.disabled = true;
+            console.log(num);
+        }
+        document.getElementById("guess").onclick = function compute() {
+            var a = 0;
+            var b = 0;
+            var badge = document.createElement("span");
+            var tmp = document.createElement("li");
+            tmp.className = "list-group-item";
+            var ans = document.getElementById("anstext").value;
+            for (var i = 0; i < num.length; i++) {
+                if (ans.includes(num[i])) {
+                    if (ans[i] == num[i]) {
+                        a++;
+                    }
+                    else {
+                        b++;
+                    }
+                }
+            }
+            if (a == 4) {
+                alert("結束");
+                badge.className = "badge badge-success";
+            }
+            else
+            {
+                badge.className = "badge badge-danger";
+            }
+            badge.innerText = a + "A" + b + "B";
+            tmp.appendChild(badge);
+            var p = document.createElement("p");
+            p.innerText = ans;
+            p.style="display:inline; margin-left:10px;"
+            tmp.appendChild(p);
+            document.getElementById("list").appendChild(tmp);
+        };
+        document.getElementById("giveup").onclick = giveup();
+        function giveup()
+        {
+            num = "";
+            var newlist = document.createElement("ul");
+            document.getElementById("list").innerHTML='';
+        }
+    </script>
+</body>
+
+</html>

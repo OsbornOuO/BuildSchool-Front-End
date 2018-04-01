@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                    <label class="form-check-label" for="exampleRadios1">
+                        攝氏
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        華氏
+                    </label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="row">
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="1">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="2">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="3">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="4">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="5">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="6">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="7">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="8">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="9">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value="0">
+                    </div>
+                    <div class="col-4">
+                        <input name="" id="" class="btn btn-dark" type="button" value=".">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <input id="inputext" type="text" class="form-control" placeholder="請輸入轉換溫度" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button id="compute" class="btn btn-outline-secondary" type="compute" onclick="GetValue()">轉換</button>
+                                <button class="btn btn-outline-secondary" type="clear" onclick="Clear()">清除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">結果</div>
+                                </div>
+                                <input type="text" class="form-control" id="AnswerText" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script>
+            var number = "";
+
+            document.querySelectorAll("input[type=button]").forEach(element => {
+                element.onclick=function()
+                {
+                    number +=element.value;
+                    document.getElementById("inputext").value += element.value;
+                }
+            });
+            function GetValue() {
+                console.log(number+"?");
+                document.getElementById("AnswerText").value = Gettmp();
+                console.log(Gettmp());
+            }
+            function Gettmp() {
+                if (document.getElementById("exampleRadios1").checked) {
+                    return ((parseInt(number,10)) * 5 / 9 + 32).toFixed(2);
+                }
+                else if(document.getElementById("exampleRadios2").checked){
+                    return ((parseFloat(number,10) - 32) / 1.8).toFixed(2);
+                }
+            }
+            function Clear() {
+                number = 0;
+                document.getElementById("inputext").value = " ";
+                document.getElementById("AnswerText").value=" ";
+            }
+        </script>
+</body>
+
+</html>

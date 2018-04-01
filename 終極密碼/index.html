@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col pl-5 pr-5">
+                <table class="table" style="width:300px; background:black;border-style: none; color:white">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>終極密碼</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th id="answer" style="height:80px; font-size:30px ;"></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th id="input" style="height:80px; font-size:30px ;"></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th id="records" style="height:80px; font-size:15px ;"></th>
+                            <th></th>
+                            <th id="times" style="height:80px; font-size:15px ;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">1</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">2</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">3</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">4</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">5</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">6</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">7</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">8</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark rounded-circle">9</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="close" class="btn-lg btn-dark">X</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-lg btn-dark">0</button>
+                            </td>
+                            <td>
+                                <button id="enter" class="btn-lg btn-dark">
+                                    <i class="fas fa-arrow-circle-right"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var input = "";
+        var max = 100;
+        var min = 1;
+        var num = Math.floor(Math.random() * 100 + 1);
+        var error = 0;
+        var time = 5;
+
+        document.getElementById("records").innerText = "答錯次數 : " + error;
+        document.getElementById("times").innerText = "剩餘次數 : " + time;
+
+        document.querySelectorAll("button[type=button]").forEach(element => {
+            element.onclick = function () {
+                if (num.length != 3) {
+                    input += element.innerText;
+                }
+                document.getElementById("input").innerText = input;
+                console.log(input);
+            };
+        });
+        document.querySelector("#enter").onclick = function () {
+            console.log(num);
+
+            if (input == num) {
+                document.getElementById("answer").innerText = "猜中了";
+            }
+            else if (input > num && input < max) {
+                max = input;
+                document.getElementById("answer").innerText = min + "~" + max;
+            }
+            else if (input < num && input > min) {
+                min = input;
+                document.getElementById("answer").innerText = min + "~" + max;
+            }
+            error++;
+            time--;
+            if (time == 0) {
+                document.querySelectorAll("button[type=button]").forEach(element => {
+                    this.disabled = true;
+                });
+            }
+            input = "";
+            document.getElementById("input").innerText = "";
+            document.getElementById("records").innerText = "答錯次數 : " + error;
+            document.getElementById("times").innerText = "剩餘次數 : " + time;
+        };
+        document.getElementById("close").onclick = function () {
+            if (document.querySelector("button[type=button]").disabled == false) {
+                time = 5;
+                error = 0;
+            }
+            input = "";
+            document.getElementById("input").innerText = "";
+            document.getElementById("answer").innerText = "";
+        };
+    </script>
+</body>
+
+</html>
