@@ -156,60 +156,45 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="row">
-                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                            <div class="row mt-1">
+                                <div class="col">
                                     <span>
                                         <b> 行程日期</b>
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <select class="form-control" id="Model-yearlist" style="font-size:15px;width:100px; border-style:none;"></select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-control" id="Model-monthlist" style="font-size:15px;width:115px; border-style:none;" onchange="ChangeMdate()"></select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-control" id="Model-datelist" style="font-size:15px;width:65px; border-style:none;"></select>
+                                    <input type="date" class="form-control" name="" id="inpute_Date" style="border-style:none">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                            <div class="row mt-1">
+                                <div class="col">
                                     <span>
                                         <b>顏色</b>
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <select style="border-style:none" class="form-control" id="input_color">
-                                        <option value="">None</option>
-                                        <option value="list-group-item-primary">藍</option>
-                                        <option value="list-group-item-success">綠</option>
-                                        <option value="list-group-item-danger">紅</option>
-                                        <option value="group-item-warning">黃</option>
-                                    </select>
+                                    <input type="color" class="form-control" id="input_color" style="border-style:none" style="height:35px;">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                            <div class="row mt-1">
+                                <div class="col mt-2">
                                     <span>
-                                        <b> 行程日期</b>
+                                        <b>開始時間</b>
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <input class="form-control" id="input_fromHr" placeholder="輸入起始時間">
-                                    </div>
+                                    <input type="time" class="form-control" id="input_fromHr" style="border-style:none">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col" style="font-size:15.5px; padding-top:8px">
+                            <div class="row mt-1">
+                                <div class="col mt-2">
                                     <span>
-                                        <b> 行程日期</b>
+                                        <b>結束時間</b>
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <input class="form-control" id="input_toHr" placeholder="輸入結束時間">
-                                    </div>
+                                    <input type="time" class="form-control" id="input_toHr" style="border-style:none">
+
                                 </div>
                             </div>
                         </div>
@@ -254,7 +239,7 @@
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <input type="date" class="form-control" name="" id="D_chooseDate">
+                                    <input type="date" class="form-control" name="" id="D_chooseDate" style="border-style:none">
                                 </div>
                             </div>
                             <div class="row">
@@ -264,13 +249,7 @@
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <select style="border-style:none" class="form-control" D="input_color">
-                                        <option value="">None</option>
-                                        <option value="list-group-item-primary">藍</option>
-                                        <option value="list-group-item-success">綠</option>
-                                        <option value="list-group-item-danger">紅</option>
-                                        <option value="group-item-warning">黃</option>
-                                    </select>
+                                    <input type="color" class="form-control" name="" id="D_color" style="height:35px; border-style:none">
                                 </div>
                             </div>
                             <div class="row">
@@ -280,9 +259,7 @@
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <input class="form-control" id="D_fromHr" placeholder="輸入起始時間">
-                                    </div>
+                                    <input type="time" class="form-control" id="D_fromHr" style="border-style:none">
                                 </div>
                             </div>
                             <div class="row">
@@ -293,9 +270,7 @@
                                     </span>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <input class="form-control" id="D_toHr" placeholder="輸入結束時間">
-                                    </div>
+                                    <input type="time" class="form-control" id="D_toHr" style="border-style:none">
                                 </div>
                             </div>
                         </div>
@@ -321,7 +296,7 @@
     <script>
         var d, f, start;
         var month = new Array(12);
-
+        //    localStorage.clear();
         month[0] = "January"
         month[1] = "February"
         month[2] = "March"
@@ -337,60 +312,66 @@
 
         function Modifychedule() {
             console.log(document.getElementById("D_chooseDate").value);
-            // var YearItem = {
-            //     year: document.getElementById("D_yearlist").value,
-            //     month: document.getElementById("D_monthlist").value,
-            //     item: []
-            // };
-            // var Nowitem = {
-            //     day: document.getElementById("D-datelist").value,
-            //     fromHr: document.getElementById("D_fromHr").value,
-            //     toHr: document.getElementById("D_toHr").value,
-            //     color: " " + document.getElementById("D_color").value + " ",
-            //     something: _something = document.getElementById("D_something").value
-            // };
-            // var storage = JSON.parse(localStorage[DeleteKey]);
-            // console.log("?");
-            // for (var i in storage.item) {
-            //     if (storage.item[i].day == needDelValue[0] && storage.item[i].fromHr == needDelTime[0] && storage.item[i].toHr == needDelTime[1] && storage.item[i].something == needDelValue[3]) {
-            //         storage.item[i].fromHr = document.getElementById("D_fromHr").value;
-            //         storage.item[i].toHr = document.getElementById("D_toHr").value;
-            //         storage.item[i].something = document.getElementById("D_something").value;
-            //         console.log("?");
-            //         break;
-            //     }
-            // }
-            // localStorage.setItem(DeleteKey, JSON.stringify(storage));
-            // f = new Date(d.getFullYear(), d.getMonth(), 1);
-            // start = new Date(d.getFullYear(), d.getMonth());
-            // start = getStart(start);
-            // CreateList();
+            var D_date = document.getElementById("D_chooseDate").value.split('-');
+            var YearItem = {
+                year: D_date[0],
+                month: D_date[1],
+                item: []
+            };
+            var Nowitem = {
+                day: D_date[2],
+                fromHr: document.getElementById("D_fromHr").value,
+                toHr: document.getElementById("D_toHr").value,
+                color: " " + document.getElementById("D_color").value + " ",
+                something: _something = document.getElementById("D_something").value
+            };
+            var storage = JSON.parse(localStorage.getItem(DeleteKey));
+            for (var i in storage.item) {
+                if (storage.item[i].day == needDelDate && storage.item[i].fromHr == needDelTime[0] && storage.item[i].toHr == needDelTime[1] && storage.item[i].something == needDelValue[1]) {
+                    storage.item.splice(i, 1);
+                    if (storage.year == D_date[0] && storage.month == D_date[1]) {
+                        storage.item.push(Nowitem);
+                        localStorage.setItem(DeleteKey, JSON.stringify(storage));
+                        console.log("沒改變月份");
+                    }
+                    else {
+                        YearItem.item.push(Nowitem);
+                        localStorage.setItem(D_date[0] + D_date[1], JSON.stringify(YearItem));
+                        console.log("有改變月份");
+                    }
+                    break;
+                }
+            }
+            f = new Date(d.getFullYear(), d.getMonth(), 1);
+            start = new Date(d.getFullYear(), d.getMonth());
+            start = getStart(start);
+            CreateList();
         }
         function Createschedule() {
+            var date = document.getElementById("inpute_Date").value.split('-');
+            console.log(date);
             var YearItem = {
-                year: _year,
-                month: _month,
+                year: date[0],
+                month: date[1],
                 item: []
             };
             //有問題     var YearItem = Object.create(yearSchedule);
             var Nowitem = {
-                day: document.getElementById("Model-datelist").value,
-                fromHr: document.getElementById("input_fromHr").value,
-                toHr: document.getElementById("input_toHr").value,
+                day: date[2],
+                fromHr: document.getElementById("input_fromHr").value.toString(),
+                toHr: document.getElementById("input_toHr").value.toString(),
                 color: " " + document.getElementById("input_color").value + " ",
                 something: document.getElementById("input_something").value
             };
-
-            console.log(localStorage);
-            if (localStorage.getItem(_year.toString() + _month.toString()) == null) {
+            if (localStorage.getItem(date[0] + date[1]) == null) {
                 YearItem.item.push(Nowitem);
-                localStorage.setItem(_year.toString() + _month.toString(), JSON.stringify(YearItem));
+                localStorage.setItem(date[0] + date[1], JSON.stringify(YearItem));
             } else {
-                var tmp = JSON.parse(localStorage.getItem(_year.toString() + _month.toString()));
+                var tmp = JSON.parse(localStorage.getItem(date[0] + date[1]));
                 tmp.item.push(Nowitem);
-                localStorage.setItem(_year.toString() + _month.toString(), JSON.stringify(tmp));
+                localStorage.setItem(date[0] + date[1], JSON.stringify(tmp));
             }
-            console.log(JSON.parse(localStorage.getItem(_year.toString() + _month.toString())));
+            console.log(localStorage);
             f = new Date(d.getFullYear(), d.getMonth(), 1)
             start = new Date(d.getFullYear(), d.getMonth());
             start = getStart(start);
@@ -414,49 +395,25 @@
         function CreateYear() {
             for (var i = 1950; i < 2040; i++) {
                 var item = document.createElement("option"); // 問題
-                var item2 = document.createElement("option");
                 if (i == d.getFullYear()) {
                     item.selected = true;
-                    item2.selected = true;
                 }
-                item2.innerText = i;
-                item2.value = i;
                 item.innerText = i;
                 item.value = i;
                 item.style = "color:#ee7d8e";
                 document.getElementById("yearlist").appendChild(item);
-                document.getElementById("Model-yearlist").appendChild(item2);
             }
         }
         function CreateMonth() {
             for (var i = 0; i < month.length; i++) {
                 var item = document.createElement("option");
-                var item2 = document.createElement("option");
                 if (i == d.getMonth()) {
                     item.selected = true;
                 }
                 item.innerText = month[i];
                 item.value = i;
                 item.style = "color:#ee7d8e";
-                item2.innerText = month[i];
-                item2.value = i;
                 document.getElementById("monthlist").appendChild(item);
-                document.getElementById("Model-monthlist").appendChild(item2);
-            }
-        }
-        function ChangeMdate() {
-            document.getElementById("Model-datelist").innerHTML = "";
-            var _year = document.getElementById("Model-yearlist").value;
-            var _month = document.getElementById("Model-monthlist").value;
-            var tmp = new Date(_year, (parseInt(_month) + 1), 0).getDate();
-            for (var i = 1; i <= tmp; i++) {
-                var item = document.createElement("option");
-                if (i == d.getDate()) {
-                    item.selected = true;
-                }
-                item.innerText = i;
-                item.value = i;
-                document.getElementById("Model-datelist").appendChild(item);
             }
         }
         function CreateDate() {
@@ -466,17 +423,13 @@
             var tmp = new Date(year, (parseInt(month) + 1), 0).getDate();
             for (var i = 1; i <= tmp; i++) {
                 var item = document.createElement("option");
-                var item2 = document.createElement("option");
                 if (i == d.getDate()) {
                     item.selected = true;
                 }
                 item.innerText = i;
                 item.value = i;
-                item2.innerText = i;
-                item2.value = i;
                 item.style = "color:#ee7d8e";
                 document.getElementById("datelist").appendChild(item);
-                document.getElementById("Model-datelist").appendChild(item2);
             }
         }
         window.onload = function () {
@@ -495,13 +448,12 @@
         var needDelValue;
         var needDelTime;
         var needDelDate;
+
         document.getElementById("CheckDelete").onclick = function () {
-            var storage = JSON.parse(localStorage[DeleteKey]);
-            console.log("?");
+            var storage = JSON.parse(localStorage.getItem(DeleteKey));
             for (var i in storage.item) {
                 if (storage.item[i].day == needDelDate && storage.item[i].fromHr == needDelTime[0] && storage.item[i].toHr == needDelTime[1] && storage.item[i].something == needDelValue[1]) {
                     storage.item.splice(i, 1);
-                    console.log("?");
                     break;
                 }
             }
@@ -523,12 +475,17 @@
             itemSp.className = "badge-light badge-pill badge-sm mr-2";
             listButton.className = "btn btn-block pr-0 pt-0 pl-0 pb-0 text-left";
             listButton.formTarget = "#deleteM";
-
-            if (localStorage.getItem(year.toString() + month.toString()) != null) {
-                var retrievedObject = JSON.parse(localStorage[year.toString() + month.toString()]).item;
+            var tmp_yearmonth = year.toString();
+            if (month < 10)
+                tmp_yearmonth += "0" + (month + 1).toString();
+            else
+                tmp_yearmonth += (month + 1).toString();
+            if (localStorage.getItem(tmp_yearmonth) != null) {
+                var retrievedObject = JSON.parse(localStorage[tmp_yearmonth]).item;
                 for (var i in retrievedObject) {
                     if (retrievedObject[i].day == day) {
-                        itemli.className += retrievedObject[i].color;
+                        itemli.style = "background-color:" + retrievedObject[i].color + ";border-style:none";
+                        console.log(retrievedObject[i].color)
                         itemSp.innerHTML = "<i>" + retrievedObject[i].fromHr.toString() + "-" + retrievedObject[
                             i].toHr
                             .toString() + "</i>"
@@ -538,40 +495,31 @@
                         listButton.value = month.toString() + day.toString();
                         listButton.dataset.target = "#deleteM";
                         listButton.dataset.toggle = "modal";
-                        console.log(listButton.dataset.target);
-
                         listButton.onclick = function () {
-                            needDelDate = this.parentNode.parentNode.innerText.split("\n")[0];
+                            var tmp_date = this.parentNode.parentNode.innerText.split("\n")[0];
+                            if (tmp_date < 10) {
+                                needDelDate = "0" + tmp_date;
+                            }
+                            else {
+                                needDelDate = tmp_date;
+                            }
                             needDelValue = this.innerText.split("\n");
                             needDelTime = needDelValue[0].split('-');
-                            DeleteKey = year.toString() + month.toString();
-                            document.getElementById("D_title").innerText = d.getFullYear() + "/" + d.getMonth() + "/" + needDelDate
+                            DeleteKey = year.toString();
+                            document.getElementById("D_title").innerText = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + needDelDate
                             var time = d.getFullYear()
-                            if (d.getMonth() < 10)
-                                time += "-0" + d.getMonth();
+                            if (d.getMonth() < 10) {
+                                time += "-0" + (d.getMonth() + 1);
+                                DeleteKey += "0" + (d.getMonth() + 1);
+                            }
                             else
-                                time + d.getMonth();
-                            if (needDelDate < 10)
-                                time += "-0" + needDelDate;
-                            else
-                                time += needDelValue[0];
-                            document.getElementById("D_something").value= needDelValue[1];
+                                time +="-"+d.getMonth();
+                            time += "-" + needDelDate;
+
+                            document.getElementById("D_something").value = needDelValue[1];
                             document.getElementById("D_chooseDate").value = time;
                             document.getElementById("D_fromHr").value = needDelTime[0];
                             document.getElementById("D_toHr").value = needDelTime[1];
-                            console.log(needDelDate,needDelValue, needDelTime, DeleteKey);
-                            // var storage = JSON.parse(localStorage[year.toString()+month.toString()]);
-                            // for (var i in storage.item) {
-                            //     if (storage.item[i].day == tmp[0] && storage.item[i].fromHr == time[0] && storage.item[i].toHr == time[1] && storage.item[i].something == tmp[3]) {
-                            //         storage.item.splice(i, 1);
-                            //         break;
-                            //     }
-                            // }
-                            // localStorage.setItem(year.toString()+month.toString(), JSON.stringify(storage));
-                            // f = new Date(d.getFullYear(), d.getMonth(), 1);
-                            // start = new Date(d.getFullYear(), d.getMonth());
-                            // start = getStart(start);
-                            // CreateList();
                         };
                         listItemul.appendChild(listButton);
                         //重置所有元件
@@ -621,6 +569,27 @@
             document.getElementById("year").innerText = d.getFullYear();
             document.getElementById("month").innerText = month[d.getMonth()];
             document.getElementById("date").innerText = d.getDate();
+            var tmp_date = d.getFullYear();
+            if(d.getMonth()<10)
+            {
+                tmp_date+="-0"+d.getMonth();
+            }
+            else
+            {
+                tmp_date+="-"+d.getMonth();
+            }
+            if(d.getDay()<10)
+            {
+                tmp_date+="-0"+d.getDate();
+            }
+            else
+            {
+                tmp_date+="-"+d.getDate();
+            }
+            console.log(tmp_date);
+            document.getElementById("inpute_Date").value = tmp_date;
+            document.getElementById("input_fromHr").value = "00:00";
+            document.getElementById("input_toHr").value = "00:00";
         };
         document.getElementById("left").onclick = function () {
             d.setMonth(d.getMonth() - 1);
