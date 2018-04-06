@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .mapstyle {
+            width: 700px;
+            height: 500px;
+            border: 1px solid #000000;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-vBak6HuCC2ua_lRrpo8uA6NnaSICqC4" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div id="map" class="mapstyle ml-2">
+                MAP
+            </div>
+            <div id="fuck" class="col mr-2">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var map;
+        var maker;
+        var point1 = null, point2 = null;
+        var directionsService1 = null;
+        var directionsService2 = null;
+        var directionsService3 = null;
+        var directionsDisplay1 = null;
+        var directionsDisplay2 = null;
+        var directionsDisplay3 = null;
+        window.onload = function () {
+            map = new google.maps.Map(
+                document.getElementById('map'), {
+                    center: { lat: 24.7571075, lng: 120.952429 },
+                    zoom: 15
+                });
+            directionsService1 = new google.maps.DirectionsService();
+            directionsService2 = new google.maps.DirectionsService();
+            //   directionsService3 = new google.maps.DirectionsService();
+            directionsDisplay1 = new google.maps.DirectionsRenderer();
+            directionsDisplay2 = new google.maps.DirectionsRenderer();
+            //      directionsDisplay3 = new google.maps.DirectionsRenderer();
+            directionsDisplay1.setMap(map);
+            directionsDisplay2.setMap(map);
+            //          directionsDisplay3.setMap(map);
+            map.addListener('click', function (e) {
+                if (point1 != null && point2 != null) {
+                    point1 = null;
+                    point2 = null;
+                }
+
+                if (point1 == null) {
+                    point1 = e.latLng.lat() + ',' + e.latLng.lng();
+                    return;
+                }
+                if (point2 == null) {
+                    point2 = e.latLng.lat() + ',' + e.latLng.lng();
+                }
+                if (point1 != null && point2 != null) {
+                    directionsService1.route({
+                        origin: point1,
+                        destination: point2,
+                        travelMode: 'DRIVING'
+                    }, function (response, status) {
+                        if (status === 'OK') {
+                            var allkm = " ",highway=" ";
+                            var allkm = getStep(response)
+                            var highway = Math.round(getHighway(response) * 12)
+                            if(highway==NaN)
+                            {
+                                highway = 0;
+                            }
+                            console.log(highway);
+                            var taxiMoney = 85;
+                            if (allkm - 15 > 0) {
+                                taxiMoney += Math.round((allkm - 15) * 4)
+                            }
+                            document.getElementById("fuck").innerHTML += "<br/> 自行開車: <br/>總共" +
+                                allkm + "公里 , " +
+                                Math.round(allkm * 5) + "元" +
+                                "<br/>高速公路通行費 : " + highway + "元" +
+                                "<br/>總共 : " + (Math.round(allkm * 5) + Math.round(highway * 1.2)) +
+                                "<br/><br/>計程車:<br/>總共" + allkm + "公里" +
+                                "<br>路程費:" + taxiMoney + "元" +
+                                "<br/>高速公路通行費 : " + highway + "元"+
+                                "<br/>總共為: " + (taxiMoney + highway);
+                            directionsDisplay1.setDirections(response);
+                        } else {
+                            window.alert('Directions request failed due to ' + status);
+                        }
+                    });
+                    directionsService2.route({
+                        origin: point1,
+                        destination: point2,
+                        travelMode: 'TRANSIT'
+                    }, function (response, status) {
+                        if (status === 'OK') {
+                            document.getElementById("fuck").innerHTML += "<br/><br/>大眾運輸:" +
+                                getTransit(response);
+                            directionsDisplay2.setDirections(response);
+                        } else {
+                            window.alert('Directions request failed due to ' + status);
+                        }
+                    });
+                }
+            });
+        }
+        function getTransit(result) {
+            var str;
+            var step = "<br>路徑為:<br/>";
+            var num = 1;
+            for (var i of result['routes']) {
+                for (var j of i['legs']) {
+                    str = "<br/>行走距離為 : " + j['distance'].text +
+                        "<br/>耗費時間為 : " + j['duration'].text;
+
+                    for (var k of j['steps']) {
+                        for (var l of k['steps']) {
+                            step += num + " : " + l['instructions'] + "<br/>"
+                            num++;
+                        }
+                    }
+                }
+            }
+            console.log(str);
+            return str + step;
+        }
+        function getStep(result) {
+            for (var i of result["routes"]) {
+                for (var j of i["legs"]) {
+                    //                   console.log(j);
+                    //                  document.getElementById("fuck").innerHTML += j["distance"]["text"]+"  "+ j["duration"]["text"] + j["steps"].length;
+                    console.log(j['distance']['text'])
+                    return j['distance']['text'].split(' ')[0];
+                }
+            }
+        }
+        function getHighway(result) {
+            var text=0;
+            for (var i of result["routes"]) {
+                for (var j of i["legs"]) {
+                    for (var k of j['steps']) {
+                        var str = k['instructions'];
+                        if (str.indexOf('收費') > -1) {
+                            // console.log(str)
+                            // console.log(k['distance']['text'].split(' ')[0])
+
+                            text = parseFloat(k['distance']['text'].split(' ')[0]);
+                        }
+                        //             console.log(typeof(str));
+                    }
+                }
+            }
+            return text;
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
