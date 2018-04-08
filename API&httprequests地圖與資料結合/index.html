@@ -76,10 +76,8 @@
                             };
                             SetMarker(map, center, item.旅館名稱, iconList[0])
                         } else if (item.得獎產品名稱 !== undefined && item.地址 !== "") {
-                            sleep(1500);
                             geocodeAddress(geocoder, map, item['店家名稱'], item['地址'], iconList[1])
                         } else if (item.景點名稱 !== undefined) {
-                            sleep(1500);
                             geocodeAddress(geocoder, map, item['景點名稱'], item['地址'], iconList[2])
                         }
                         //geocodeAddress(geocoder, map, i['旅館名稱'], i['營業地址'], iconList[i]);
@@ -105,16 +103,18 @@
         }
 
         function geocodeAddress(geocoder, resultsMap, resultsTitle, resultsAddress, resultsIcon) {
-            console.log(resultsTitle, resultsAddress);
             geocoder.geocode({
                 'address': resultsAddress
             }, function (results, status) {
                 if (status === 'OK') {
-                    resultsMap.setCenter(results[0].geometry.location);
-                    console.log(results[0].geometry.location);
+                    console.log(resultsTitle, resultsAddress);
                     SetMarker(resultsMap, results[0].geometry.location, resultsTitle, resultsIcon)
                 } else {
-                    console.log(status);
+                    if(status=="OVER_QUERY_LIMIT")
+                    {
+                        console.log(status,"壞掉了給他四秒鐘");
+                        sleep(4000);
+                    }
                 }
             });
         }
