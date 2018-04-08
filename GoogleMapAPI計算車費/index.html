@@ -33,7 +33,8 @@
     <script>
         var map;
         var maker;
-        var point1 = null, point2 = null;
+        var point1 = null,
+            point2 = null;
         var directionsService1 = null;
         var directionsService2 = null;
         var directionsService3 = null;
@@ -43,7 +44,10 @@
         window.onload = function () {
             map = new google.maps.Map(
                 document.getElementById('map'), {
-                    center: { lat: 24.7571075, lng: 120.952429 },
+                    center: {
+                        lat: 24.7571075,
+                        lng: 120.952429
+                    },
                     zoom: 15
                 });
             directionsService1 = new google.maps.DirectionsService();
@@ -75,11 +79,11 @@
                         travelMode: 'DRIVING'
                     }, function (response, status) {
                         if (status === 'OK') {
-                            var allkm = " ",highway=" ";
+                            var allkm = " ",
+                                highway = " ";
                             var allkm = getStep(response)
                             var highway = Math.round(getHighway(response) * 12)
-                            if(highway==NaN)
-                            {
+                            if (highway == NaN) {
                                 highway = 0;
                             }
                             console.log(highway);
@@ -94,7 +98,7 @@
                                 "<br/>總共 : " + (Math.round(allkm * 5) + Math.round(highway * 1.2)) +
                                 "<br/><br/>計程車:<br/>總共" + allkm + "公里" +
                                 "<br>路程費:" + taxiMoney + "元" +
-                                "<br/>高速公路通行費 : " + highway + "元"+
+                                "<br/>高速公路通行費 : " + highway + "元" +
                                 "<br/>總共為: " + (taxiMoney + highway);
                             directionsDisplay1.setDirections(response);
                         } else {
@@ -117,6 +121,7 @@
                 }
             });
         }
+
         function getTransit(result) {
             var str;
             var step = "<br>路徑為:<br/>";
@@ -137,6 +142,7 @@
             console.log(str);
             return str + step;
         }
+
         function getStep(result) {
             for (var i of result["routes"]) {
                 for (var j of i["legs"]) {
@@ -147,8 +153,9 @@
                 }
             }
         }
+
         function getHighway(result) {
-            var text=0;
+            var text = 0;
             for (var i of result["routes"]) {
                 for (var j of i["legs"]) {
                     for (var k of j['steps']) {
