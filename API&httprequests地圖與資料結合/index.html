@@ -10,6 +10,8 @@
 
         #map {
             height: 100%;
+            width: 70%;
+            float: left;
         }
 
         /* Optional: Makes the sample page fill the window. */
@@ -43,13 +45,20 @@
         <input id="submit" type="button" value="Geocode">
     </div>
     <div id="map"></div>
+    <div id="list" style="float:right;width:25%; margin:20px 20px;"></div>
     <script>
         var request = new XMLHttpRequest();
         //第一個旅館 第二個美食 第三個景點
         var urlList = [
+<<<<<<< HEAD
             "http://opendata.hccg.gov.tw/dataset/39ee314b-7ce7-4265-a6b5-b57f42392da8/resource/6a3a5f61-5383-419d-a94c-df710071a51e/download/20180321131425502.json",
             "http://opendata.hccg.gov.tw/dataset/4e722575-66a2-4af9-b1ff-95c2469331d1/resource/e17629a6-f7fb-4895-9d91-9d8e37d79eae/download/20180307103221255.json",
             "http://opendata.hccg.gov.tw/dataset/07caf18a-a966-4409-810a-ce3fdb7447b7/resource/3bca2d3b-177c-4e4a-9576-4a3ed8c81612/download/20180307114843661.json"
+=======
+            "hotel.json",
+            "food.json",
+            "play.json"
+>>>>>>> 0ab579d478545d23556a33edfd78b7ac667e100f
         ];
         var iconList = [
             "https://png.icons8.com/office/40/000000/home.png",
@@ -58,6 +67,7 @@
 
         ];
         var map;
+<<<<<<< HEAD
         var geocoder;
         CreateMarker();
 
@@ -86,6 +96,35 @@
             }
         }
 
+=======
+        var step = [];
+        window.onload = function () {
+            for (var i = 0; i < urlList.length; i++) {
+                CreateMarker(urlList[i], iconList[i]);
+            }
+        }
+
+        function CreateMarker(resultsfile, resultsIcon) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        var result = JSON.parse(request.responseText)
+                        for (var i of result) {
+                            SetMarker(i.location, i.name, resultsIcon);
+                        }
+                    } else {
+                        console.log("error");
+                    }
+                }
+            };
+            request.open("GET",
+                resultsfile, true
+            );
+            request.send();
+        };
+
+>>>>>>> 0ab579d478545d23556a33edfd78b7ac667e100f
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 8,
@@ -101,6 +140,7 @@
             });
         }
 
+<<<<<<< HEAD
         function geocodeAddress(geocoder, resultsMap, resultsTitle, resultsAddress, resultsIcon) {
             geocoder.geocode({
                 'address': resultsAddress
@@ -119,13 +159,48 @@
         }
 
         function SetMarker(resultsMap, resultsPosition, resultsTitle, resultsIcon) {
+=======
+        function SetMarker(resultsPosition, resultsTitle, resultsIcon) {
+>>>>>>> 0ab579d478545d23556a33edfd78b7ac667e100f
             var marker = new google.maps.Marker({
-                map: resultsMap,
+                map: map,
                 position: resultsPosition,
                 title: resultsTitle,
                 icon: resultsIcon
             });
+            marker.addListener('click', function (e) {
+                step.push({
+                    title: e.Fa.path[1].title,
+                    position: e.latLng
+                });
+                addlist(step)
+            });
         }
+<<<<<<< HEAD
+=======
+
+        function addlist(resultsList) {
+            document.getElementById("list").innerText="";
+            for (var i of resultsList) {
+                document.getElementById("list").innerText += i.title+"\n";
+            }
+        }
+        // function geocodeAddress(geocoder, resultsMap, resultsTitle, resultsAddress, resultsIcon) {
+        //     geocoder.geocode({
+        //         'address': resultsAddress
+        //     }, function (results, status) {
+        //         if (status === 'OK') {
+        //             console.log(resultsTitle, resultsAddress);
+        //             SetMarker(resultsMap, results[0].geometry.location, resultsTitle, resultsIcon)
+        //         } else {
+        //             if (status == "OVER_QUERY_LIMIT") {
+        //                 console.log(status, "壞掉了給他四秒鐘");
+        //                 sleep(4000);
+        //             }
+        //         }
+        //     });
+        // }
+>>>>>>> 0ab579d478545d23556a33edfd78b7ac667e100f
         function sleep(milliseconds) {
             var start = new Date().getTime();
             for (var i = 0; i < 1e7; i++) {
