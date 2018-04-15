@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+    <style>
+        ul{
+            list-style: none;
+            padding-left:0px;
+        }
+        li{
+            margin: 5px 5px;
+            padding: 0px 10px ;
+            background-color:#cacaca;
+            width: 230px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "http://opendata.hccg.gov.tw/dataset/0ada783d-f3ac-4d0d-9344-955fd7438cd8/resource/508e6209-b1b3-494d-9469-9cf8831eaf80/download/20180314164845937.json",
+                type: "GET"
+            }).done(function (results) {
+                console.log(results);
+                for (var item of results) {
+                    $("#list").append($('<li></li>').text(item.機構名稱));
+                }
+                $('#list').sortable({ revert: true });
+            })
+        })
+    </script>
+</body>
+
+</html>

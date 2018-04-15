@@ -13,6 +13,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
         crossorigin="anonymous">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-vBak6HuCC2ua_lRrpo8uA6NnaSICqC4" type="text/javascript"></script>
     <style>
         body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
@@ -41,6 +42,17 @@
             width: 220px;
             margin-left: 43%;
             margin-top: 25%;
+        }
+
+        .mapstyle {
+            height: 250px;
+            border: 1px solid #000000;
+        }
+
+        .mapstyle2 {
+            width: 150px;
+            height: 250px;
+            border: 1px solid #000000;
         }
     </style>
 </head>
@@ -199,6 +211,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" id="input_address" class="form-control" placeholder="輸入地址" aria-label="輸入地址" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="search_latlng">＋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mapstyle" id="input_map">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,6 +302,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" id="D_address" class="form-control" placeholder="輸入地址" aria-label="輸入地址" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="D_search_latlng">＋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mapstyle2" id="D_map">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" id="CheckDelete">Delete</button>
@@ -296,7 +338,7 @@
     <script>
         var d, f, start;
         var month = new Array(12);
-        //    localStorage.clear();
+        //      localStorage.clear();
         month[0] = "January"
         month[1] = "February"
         month[2] = "March"
@@ -309,7 +351,38 @@
         month[9] = "October"
         month[10] = "November"
         month[11] = "December"
-
+        document.getElementById('search_latlng').onclick = function () {
+            marker = null;
+            address = document.getElementById('input_address').value;
+            geocoder.geocode({
+                'address': document.getElementById('input_address').value
+            }, function (results, status) {
+                if (status === 'OK') {
+                    console.log();
+                    marker = new google.maps.Marker({
+                        position: results[0]['geometry']['location'],
+                        map: map
+                    });
+                }
+            });
+            searchCheck = true;
+        };
+        document.getElementById('search_latlng').onclick = function () {
+            marker = null;
+            address = document.getElementById('input_address').value;
+            geocoder.geocode({
+                'address': document.getElementById('input_address').value
+            }, function (results, status) {
+                if (status === 'OK') {
+                    console.log();
+                    marker = new google.maps.Marker({
+                        position: results[0]['geometry']['location'],
+                        map: map
+                    });
+                }
+            });
+            searchCheck = true;
+        };
         function Modifychedule() {
             console.log(document.getElementById("D_chooseDate").value);
             var D_date = document.getElementById("D_chooseDate").value.split('-');
@@ -323,7 +396,9 @@
                 fromHr: document.getElementById("D_fromHr").value,
                 toHr: document.getElementById("D_toHr").value,
                 color: " " + document.getElementById("D_color").value + " ",
-                something: _something = document.getElementById("D_something").value
+                something: _something = document.getElementById("D_something").value,
+                position: marker2.position,
+                address: address
             };
             var storage = JSON.parse(localStorage.getItem(DeleteKey));
             for (var i in storage.item) {
@@ -355,14 +430,16 @@
                 month: date[1],
                 item: []
             };
-            //有問題     var YearItem = Object.create(yearSchedule);
             var Nowitem = {
                 day: date[2],
                 fromHr: document.getElementById("input_fromHr").value.toString(),
                 toHr: document.getElementById("input_toHr").value.toString(),
                 color: " " + document.getElementById("input_color").value + " ",
-                something: document.getElementById("input_something").value
+                something: document.getElementById("input_something").value,
+                position: marker.position,
+                address: address
             };
+            console.log(address)
             if (localStorage.getItem(date[0] + date[1]) == null) {
                 YearItem.item.push(Nowitem);
                 localStorage.setItem(date[0] + date[1], JSON.stringify(YearItem));
@@ -371,13 +448,11 @@
                 tmp.item.push(Nowitem);
                 localStorage.setItem(date[0] + date[1], JSON.stringify(tmp));
             }
-            console.log(localStorage);
             f = new Date(d.getFullYear(), d.getMonth(), 1)
             start = new Date(d.getFullYear(), d.getMonth());
             start = getStart(start);
             CreateList();
         }
-
 
         function ChangeData() {
             var _y = document.getElementById("yearlist").value;
@@ -432,6 +507,12 @@
                 document.getElementById("datelist").appendChild(item);
             }
         }
+        var geocoder;
+        var address;
+        var map
+        var map2
+        var marker
+        var marker2
         window.onload = function () {
             d = new Date();
             f = new Date(d.getFullYear(), d.getMonth(), 1)
@@ -442,6 +523,71 @@
             CreateMonth();
             CreateDate();
             CreateList();
+            map = new google.maps.Map(document.getElementById('input_map'), {
+                zoom: 8,
+                center: {
+                    lat: 24.806455,
+                    lng: 120.644
+                }
+            });
+            map2 = new google.maps.Map(document.getElementById('D_map'), {
+                zoom: 8,
+                center: {
+                    lat: 24.806455,
+                    lng: 120.644
+                }
+            });
+            geocoder = new google.maps.Geocoder();
+            map.addListener('click', function (e) {
+                map.setCenter(e.latLng);
+                if (marker != null) {
+                    marker.setMap(null);
+                    marker = null;
+                }
+                marker = new google.maps.Marker({
+                    position: e.latLng,
+                    map: map,
+                    title: e.latLng.toString()
+                });
+                geocoder.geocode({ 'latLng': e.latLng }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        // 如果有資料就會回傳
+                        if (results) {
+                            address = results[0].formatted_address;
+                            document.getElementById('input_address').value = address;
+                        }
+                    }
+                    // 經緯度資訊錯誤
+                    else {
+                        alert("Reverse Geocoding failed because: " + status);
+                    }
+                });
+            });
+            map2.addListener('click', function (e) {
+                map2.setCenter(e.latLng);
+                if (marker2 != null) {
+                    marker2.setMap(null);
+                    marker2 = null;
+                }
+                marker2 = new google.maps.Marker({
+                    position: e.latLng,
+                    map: map2,
+                    title: e.latLng.toString()
+                });
+                geocoder.geocode({ 'latLng': e.latLng }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        // 如果有資料就會回傳
+                        if (results) {
+                            address = results[0].formatted_address;
+                            document.getElementById('D_address').value = address;
+                        }
+                    }
+                    // 經緯度資訊錯誤
+                    else {
+                        alert("Reverse Geocoding failed because: " + status);
+                    }
+                });
+            });
         }
 
         var DeleteKey;
@@ -513,13 +659,32 @@
                                 DeleteKey += "0" + (d.getMonth() + 1);
                             }
                             else
-                                time +="-"+d.getMonth();
+                                time += "-" + d.getMonth();
                             time += "-" + needDelDate;
 
                             document.getElementById("D_something").value = needDelValue[1];
                             document.getElementById("D_chooseDate").value = time;
                             document.getElementById("D_fromHr").value = needDelTime[0];
                             document.getElementById("D_toHr").value = needDelTime[1];
+                            //        document.getElementById("D_address").value =
+                            var D_month
+                            if (d.getMonth() < 10) {
+                                D_month = 0 + (d.getMonth() + 1).toString();
+                            }
+                            var Dstore = JSON.parse(localStorage.getItem(d.getFullYear().toString() + D_month));
+                            console.log(Dstore);
+                            for (var i of Dstore.item) {
+                                if (Dstore.year == d.getFullYear() && Dstore.month == D_month &&
+                                    i.day == needDelDate && i.fromHr == needDelTime[0] && i.toHr == needDelTime[1] && i.something == needDelValue[1]
+                                ) {
+                                    document.getElementById('D_address').value = i.address
+                                    marker2 = new google.maps.Marker({
+                                        position:i.position,
+                                        map:map2
+                                    });
+                                    console.log(i)
+                                }
+                            }
                         };
                         listItemul.appendChild(listButton);
                         //重置所有元件
@@ -570,21 +735,17 @@
             document.getElementById("month").innerText = month[d.getMonth()];
             document.getElementById("date").innerText = d.getDate();
             var tmp_date = d.getFullYear();
-            if(d.getMonth()<10)
-            {
-                tmp_date+="-0"+d.getMonth();
+            if (d.getMonth() < 10) {
+                tmp_date += "-0" + d.getMonth();
             }
-            else
-            {
-                tmp_date+="-"+d.getMonth();
+            else {
+                tmp_date += "-" + d.getMonth();
             }
-            if(d.getDay()<10)
-            {
-                tmp_date+="-0"+d.getDate();
+            if (d.getDay() < 10) {
+                tmp_date += "-0" + d.getDate();
             }
-            else
-            {
-                tmp_date+="-"+d.getDate();
+            else {
+                tmp_date += "-" + d.getDate();
             }
             console.log(tmp_date);
             document.getElementById("inpute_Date").value = tmp_date;
