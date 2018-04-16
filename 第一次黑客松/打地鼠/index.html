@@ -89,14 +89,22 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-2">
-
-            </div>
             <div class="col">
                 <table id="panel" class="mt-3 mb-5">
                 </table>
             </div>
-            <div class="col-2">
+            <div class="col-3">
+                <div class="row">
+                    <div class="col" style="color:white">
+                        地圖 :
+                        <select id="select" class="form-control">
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row mt-3">
                     <div class="col" style="color:white;">
                         血量
@@ -127,7 +135,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script>
-        var size = 4;
+        var size = 3;
         var level = 1;
         var leveltime = 1000;
         var time = 5;
@@ -138,6 +146,11 @@
             $('#start').click(function () {
                 setTimeout(RunGame, 3);
             })
+        })
+        $('#select').click(function(){
+            size = $(this).val();
+            console.log(size)
+            createTable();
         })
         function RunGame() {
             var $active = $('.active')
@@ -165,7 +178,9 @@
             }
             setTimeout(RunGame, leveltime)
         }
+
         function createTable() {
+            $('#panel').html("")
             for (var i = 0; i < size; i++) {
                 var tr = document.createElement('tr');
                 for (var j = 0; j < size; j++) {
