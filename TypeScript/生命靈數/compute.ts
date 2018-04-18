@@ -2,7 +2,6 @@ class star {
     month: number
     date: number
     name: string
-
 }
 let starlist = [
     <star>{ month: 1, date: 20, name: "摩羯座 capricorn.json" },
