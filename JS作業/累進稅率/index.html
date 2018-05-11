@@ -20,10 +20,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col">
+                所得淨額
+            </div>
+            <div class="col-11">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        所得淨額
+
                         <label class="input-group-text" for="inputGroupSelect01">$</label>
                     </div>
                     <input id="input" type="text" class="form-control" placeholder="金額" aria-describedby="basic-addon2">
@@ -35,8 +38,10 @@
         </div>
         <div class="row">
             <div class="col">
+                稅率
+            </div>
+            <div class="col-11">
                 <div class="input-group mb-3">
-                    稅率
                     <input id="rate" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                     <div class="input-group-prepend">
                         <span class="input-group-text">%</span>
@@ -46,8 +51,11 @@
         </div>
         <div class="row">
             <div class="col">
+                累進差額
+            </div>
+            <div class="col-11">
                 <div class="input-group mb-3">
-                    累進差額
+
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
@@ -57,8 +65,10 @@
         </div>
         <div class="row">
             <div class="col">
+                應繳稅額
+            </div>
+            <div class="col-11">
                 <div class="input-group mb-3">
-                    應繳稅額
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
@@ -92,16 +102,16 @@
             var mymoney = document.getElementById("input").value;
             for (var i = 0; i < ratearray.length - 1; i++) {
                 if (mymoney < ratearray[i].money) {
-                    console.log(mymoney+" "+ratearray[i].money);
+                    console.log(mymoney + " " + ratearray[i].money);
                     document.getElementById("rate").value = ratearray[i].rate;
                     document.getElementById("rate-money").value = ratearray[i].ratemoney;
                     document.getElementById("fuckmoney").value = (mymoney * ratearray[i].rate - ratearray[i].ratemoney).toFixed(2);
                     return;
                 }
             }
-            document.getElementById("rate").value = ratearray[ratearray.length-1].rate;
-            document.getElementById("rate-money").value = ratearray[ratearray.length-1].ratemoney;
-            document.getElementById("fuckmoney").value = (mymoney * ratearray[ratearray.length-1].rate - ratearray[ratearray.length-1].ratemoney).toFixed(2);
+            document.getElementById("rate").value = ratearray[ratearray.length - 1].rate;
+            document.getElementById("rate-money").value = ratearray[ratearray.length - 1].ratemoney;
+            document.getElementById("fuckmoney").value = (mymoney * ratearray[ratearray.length - 1].rate - ratearray[ratearray.length - 1].ratemoney).toFixed(2);
         };
     </script>
 </body>
