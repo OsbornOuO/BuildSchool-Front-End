@@ -15,6 +15,11 @@ https://osborn.azurewebsites.net/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%BB%91%E5%AE%A2%E
 http://osborn.azurewebsites.net/JS%E4%BD%9C%E6%A5%AD/%E7%8C%9C%E6%95%B8%E5%AD%97/
 ![screen shot](https://github.com/OsbornOuO/BuildSchool-Front-End/blob/master/ReadmeImage/1A2B.png)
 
+## 終極密碼 ##
+http://osborn.azurewebsites.net/JS%E4%BD%9C%E6%A5%AD/%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BC/
+![screen shot](https://github.com/OsbornOuO/BuildSchool-Front-End/blob/master/ReadmeImage/%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BC.png)
+
+
 # 累進稅率 2017 #
 http://osborn.azurewebsites.net/JS%E4%BD%9C%E6%A5%AD/%E7%B4%AF%E9%80%B2%E7%A8%85%E7%8E%87/
 ![screen shot](https://github.com/OsbornOuO/BuildSchool-Front-End/blob/master/ReadmeImage/%E7%B4%AF%E9%80%B2%E7%A8%85%E7%8E%87.png)
