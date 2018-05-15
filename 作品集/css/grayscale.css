@@ -181,11 +181,13 @@ a:focus, a:hover {
 }
 
 .content-section {
+  height: 100vh;
   padding-top: 150px;
   padding-bottom: 150px;
 }
 
 .download-section {
+  height: 100vh;
   color: white;
   background: url("../img/downloads-bg.jpg") no-repeat center center scroll;
   background-color: black;
