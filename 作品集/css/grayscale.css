@@ -185,7 +185,10 @@ a:focus, a:hover {
   padding-top: 150px;
   padding-bottom: 150px;
 }
-
+.contact-section {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
 .download-section {
   height: 100vh;
   color: white;
@@ -226,13 +229,15 @@ a:focus, a:hover {
   color: #42DCA3;
   border: 1px solid #42DCA3;
   background-color: transparent;
+  border-radius:10px;
+
 }
 
 .btn-default:focus, .btn-default:hover {
-  color: black;
+  color: rgb(255, 255, 255);
   border: 1px solid #42DCA3;
   outline: none;
-  background-color: #42DCA3;
+  background-color: rgb(55, 185, 138);
 }
 
 ul.banner-social-buttons {
