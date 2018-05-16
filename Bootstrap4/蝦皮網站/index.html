@@ -26,6 +26,7 @@
         li {
             display: inline-block;
         }
+
         .imagesm {
             width: 10%;
             display: block;
@@ -33,15 +34,16 @@
             height: 96px;
             background-image: url(http://placehold.it/107x96);
             padding: 0 5px;
+            margin: 0 5px;
         }
 
         .classification {
             height: 150px;
         }
-        .footer__useful-link *
-        {
+
+        .footer__useful-link * {
             margin: 0px 1px;
-            color:#707070;
+            color: #707070;
         }
     </style>
     <!-- Bootstrap CSS -->
@@ -52,107 +54,109 @@
 </head>
 
 <body>
-    <div class="navbar-fixed-top">
-        <div class="row text-left pt-3" style=" background-color:#ee4b2f;">
-            <div class="col-8" style="Display:inline-block;">
-                <a href="#" style="color:white">賣家中心 &nbsp;｜</a>
-                <a href="#" style="color:white">下載 &nbsp; ｜</a>
-                <a href="#" style="color:white">追蹤我們</a>
-                <a href="https://www.facebook.com/ShopeeTW" style="color:white">
-                    <i class="fab fa-facebook-f fa-1x pl-2"></i>
-                </a>
-                <a href="https://www.instagram.com/Shopee_TW" style="color:white" target="_blank" class="_21Z9DSKhnO">
-                    <i class="fab fa-instagram fa-1x pl-1 pr-1"></i>
-                </a>
-                <a href="https://line.me/R/ti/p/@shopee" style="color:white" target="_blank" class="_21Z9DSKhnO">
-                    <i class="fab fa-line fa-1x"></i>
-                </a>
-            </div>
-            <div class="col-4 text-right">
-                <a href="#" style="color:white">
-                    <i class="far fa-bell fa-1x pl-2"></i>通知導覽
-                </a>
-                <a href="#" style="color:white">
-                    <i class="far fa-bell fa-1x pl-2"></i>幫助中心
-                </a>
-                <a href="#" style="color:white">
-                    註冊
-                </a>
-            </div>
-        </div>
-        <div class="row" style="background-color:#ee4f2f">
-            <div class="col">
-                <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg">
-                    <a class="navbar-brand" href="#" style="color:white">
-                        <i class="fas fa-shopping-basket fa-3x">
-                            <p style="Display:inline; font-size:45px;">超瞎購物</p>
-                        </i>
+    <div class="container-fluid">
+        <div class="navbar-fixed-top">
+            <div class="row text-left pt-3" style=" background-color:#ee4b2f;">
+                <div class="col-8" style="Display:inline-block; padding-left: 30px">
+                    <a href="#" style="color:white">賣家中心 &nbsp;｜</a>
+                    <a href="#" style="color:white">下載 &nbsp; ｜</a>
+                    <a href="#" style="color:white">追蹤我們</a>
+                    <a href="https://www.facebook.com/ShopeeTW" style="color:white">
+                        <i class="fab fa-facebook-f fa-1x pl-2"></i>
                     </a>
-                </nav>
+                    <a href="https://www.instagram.com/Shopee_TW" style="color:white" target="_blank" class="_21Z9DSKhnO">
+                        <i class="fab fa-instagram fa-1x pl-1 pr-1"></i>
+                    </a>
+                    <a href="https://line.me/R/ti/p/@shopee" style="color:white" target="_blank" class="_21Z9DSKhnO">
+                        <i class="fab fa-line fa-1x"></i>
+                    </a>
+                </div>
+                <div class="col-3 text-right ">
+                    <a href="#" style="color:white">
+                        <i class="far fa-bell fa-1x pl-2"></i>通知導覽
+                    </a>
+                    <a href="#" style="color:white">
+                        <i class="far fa-bell fa-1x pl-2"></i>幫助中心
+                    </a>
+                    <a href="#" style="color:white">
+                        註冊
+                    </a>
+                </div>
             </div>
-            <div class="col-8 mt-3 mb-3">
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <input style="border-style:none;" type="text" class="form-control" placeholder="搜尋商品，品牌及賣場" aria-label="Recipient's username"
-                                aria-describedby="basic-addon2">
-                            <div class="input-group-append rounded-right" style="background-color:white;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
-                                <button class="btn mt-1 mb-1 mr-1 ml-1 rounded" type="button" style="width:80px; background-color:#ee4f2f;">
-                                    <i class="fas fa-search" style="color:white"></i>
-                                </button>
+            <div class="row" style="background-color:#ee4f2f">
+                <div class="col">
+                    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg">
+                        <a class="navbar-brand" href="#" style="color:white">
+                            <i class="fas fa-shopping-basket fa-3x">
+                                <p style="Display:inline; font-size:45px;">超瞎購物</p>
+                            </i>
+                        </a>
+                    </nav>
+                </div>
+                <div class="col-8 mt-3 mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input style="border-style:none;" type="text" class="form-control" placeholder="搜尋商品，品牌及賣場" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2">
+                                <div class="input-group-append rounded-right" style="background-color:white;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
+                                    <button class="btn mt-1 mb-1 mr-1 ml-1 rounded" type="button" style="width:80px; background-color:#ee4f2f;">
+                                        <i class="fas fa-search" style="color:white"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div style="font-size:15px;">
+                                <div class="hot-words__list">
+                                    <a class="hot-words__item" href="/search/?keyword=%E4%BC%91%E9%96%92+%E5%A5%97%E8%A3%9D">
+                                        <span>休閒 套裝</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=nike+air">
+                                        <span>nike air</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E8%95%BE%E7%B5%B2+%E6%B4%8B%E8%A3%9D">
+                                        <span>蕾絲 洋裝</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E5%A4%BE%E5%BC%8F+%E8%80%B3%E7%92%B0">
+                                        <span>夾式 耳環</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=adidas+%E5%A4%96%E5%A5%97">
+                                        <span>adidas 外套</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E4%BA%A4%E6%8F%9B+%E7%A6%AE%E7%89%A9">
+                                        <span>交換 禮物</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E4%B8%89%E6%98%9F+%E6%89%8B%E6%A9%9F%E6%AE%BC">
+                                        <span>三星 手機殼</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=oppo+%E6%89%8B%E6%A9%9F%E6%AE%BC">
+                                        <span>oppo 手機殼</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E5%B0%8F%E7%B1%B3+%E6%89%8B%E7%92%B0">
+                                        <span>小米 手環</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E8%97%8D%E8%8A%BD+%E8%80%B3%E6%A9%9F">
+                                        <span>藍芽 耳機</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E5%A8%9B%E6%A8%82+%E6%94%B6%E8%97%8F">
+                                        <span>娛樂 收藏</span>
+                                    </a>
+                                    <a class="hot-words__item" href="/search/?keyword=%E7%94%B7%E7%94%9F+%E7%9F%AD%E8%A2%96">
+                                        <span>男生 短袖</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div style="font-size:15px;">
-                            <div class="hot-words__list">
-                                <a class="hot-words__item" href="/search/?keyword=%E4%BC%91%E9%96%92+%E5%A5%97%E8%A3%9D">
-                                    <span>休閒 套裝</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=nike+air">
-                                    <span>nike air</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E8%95%BE%E7%B5%B2+%E6%B4%8B%E8%A3%9D">
-                                    <span>蕾絲 洋裝</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E5%A4%BE%E5%BC%8F+%E8%80%B3%E7%92%B0">
-                                    <span>夾式 耳環</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=adidas+%E5%A4%96%E5%A5%97">
-                                    <span>adidas 外套</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E4%BA%A4%E6%8F%9B+%E7%A6%AE%E7%89%A9">
-                                    <span>交換 禮物</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E4%B8%89%E6%98%9F+%E6%89%8B%E6%A9%9F%E6%AE%BC">
-                                    <span>三星 手機殼</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=oppo+%E6%89%8B%E6%A9%9F%E6%AE%BC">
-                                    <span>oppo 手機殼</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E5%B0%8F%E7%B1%B3+%E6%89%8B%E7%92%B0">
-                                    <span>小米 手環</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E8%97%8D%E8%8A%BD+%E8%80%B3%E6%A9%9F">
-                                    <span>藍芽 耳機</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E5%A8%9B%E6%A8%82+%E6%94%B6%E8%97%8F">
-                                    <span>娛樂 收藏</span>
-                                </a>
-                                <a class="hot-words__item" href="/search/?keyword=%E7%94%B7%E7%94%9F+%E7%9F%AD%E8%A2%96">
-                                    <span>男生 短袖</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col mt-4">
+                    <a href="#" style="color:white" class="mt-1">
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="col mt-4">
-                <a href="#" style="color:white" class="mt-1">
-                    <i class="fas fa-shopping-cart fa-2x"></i>
-                </a>
             </div>
         </div>
     </div>
@@ -206,79 +210,55 @@
             </div>
         </div>
         <div class="row mt-2 text-center">
-            <div class="col">
-                <ul>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px ;">
-                                <i>123</i>
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                    <li>
-                        <i class="imagesm">
-                            <div style="padding-top:70px">
-                                123
-                            </div>
-                        </i>
-                    </li>
-                </ul>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
+            </div>
+            <div class="col imagesm">
+                <div style="padding-top:70px">
+                    123
+                </div>
             </div>
         </div>
     </div>
