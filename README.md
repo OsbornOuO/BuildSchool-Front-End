@@ -62,7 +62,7 @@
 
 # 累進稅率 2017 #
 1. ProgramLanguage
-    * JavaScript
+    * JavaScript
     * Html 5
     * BootStrap4
     * CSS 3
@@ -75,7 +75,7 @@
 1. Used Technology
     * GoogleMapsAPI
 2. ProgramLanguage
-    * JavaScript
+    * JavaScript
     * Html
 
 ![screen shot](https://github.com/OsbornOuO/BuildSchool-JS/blob/master/ReadmeImage/GoogleMapAPI%E8%A8%88%E7%AE%97%E8%BB%8A%E8%B2%BB.png)
