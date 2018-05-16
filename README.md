@@ -4,7 +4,7 @@
     * GoogleMapsAPI
     * Ajax
 2.  ProgramLanguage
-    * JavaScript
+    * JavaScript
     * Html 5
     * BootStrap4
     * CSS 3
@@ -16,7 +16,7 @@
 1.  Used Technology
     * CSS transition 用法
 2.  ProgramLanguage
-    * JavaScript
+    * JavaScript
     * JQuery
     * Html 5
     * BootStrap4
@@ -26,9 +26,9 @@
 [網站連結](https://osborn.azurewebsites.net/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%BB%91%E5%AE%A2%E6%9D%BE/777)
 ## 打地鼠 : #
 1. Used Technology
-    * CSS before after用法
+    * CSS before after用法
 2. ProgramLanguage
-    * JavaScript
+    * JavaScript
     * JQuery
     * Html 5
     * BootStrap4
@@ -39,7 +39,7 @@
 
 ## 1A2B 小遊戲 ##
 1. ProgramLanguage
-    * JavaScript
+    * JavaScript
     * Html 5
     * BootStrap4
     * CSS 3
@@ -49,7 +49,7 @@
 
 ## 終極密碼 ##
 1. ProgramLanguage
-    * JavaScript
+    * JavaScript
     * Html 5
     * BootStrap4
     * CSS 3
