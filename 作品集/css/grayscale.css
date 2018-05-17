@@ -26,7 +26,7 @@ h6 {
 }
 
 p {
-  font-family: 'Cabin','Neue';
+  font-family: 'Cabin', 'Neue';
   font-size: 16px;
   line-height: 1.5;
   margin: 0 0 25px;
@@ -44,12 +44,13 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: #42DCA3;
+  color: #1d9b6c;
 }
 
-a:focus, a:hover {
+a:focus,
+a:hover {
   text-decoration: none;
-  color: #1d9b6c;
+  color: #42DCA3;
 }
 
 #mainNav {
@@ -87,7 +88,8 @@ a:focus, a:hover {
   background-color: transparent;
 }
 
-#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+#mainNav .navbar-nav .nav-item:active,
+#mainNav .navbar-nav .nav-item:focus {
   outline: none;
   background-color: transparent;
 }
@@ -174,7 +176,8 @@ a:focus, a:hover {
   background: transparent;
 }
 
-.btn-circle:focus, .btn-circle:hover {
+.btn-circle:focus,
+.btn-circle:hover {
   color: white;
   outline: none;
   background: rgba(255, 255, 255, 0.1);
@@ -185,10 +188,12 @@ a:focus, a:hover {
   padding-top: 150px;
   padding-bottom: 150px;
 }
+
 .contact-section {
   padding-top: 150px;
   padding-bottom: 150px;
 }
+
 .download-section {
   height: 100vh;
   color: white;
@@ -229,11 +234,11 @@ a:focus, a:hover {
   color: #42DCA3;
   border: 1px solid #42DCA3;
   background-color: transparent;
-  border-radius:10px;
-
+  border-radius: 10px;
 }
 
-.btn-default:focus, .btn-default:hover {
+.btn-default:focus,
+.btn-default:hover {
   color: rgb(255, 255, 255);
   border: 1px solid #42DCA3;
   outline: none;
