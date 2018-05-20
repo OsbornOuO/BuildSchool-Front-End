@@ -41,7 +41,7 @@ $(function () {
 
                         setTimeout(function () {
 
-          //                  $('#ajax-content').html($(data).filter('#ajax-content').html());
+                            $('#ajax-content').html($(data).filter('#ajax-content').html());
                             $('#ajax-sidebar').html($(data).filter('#ajax-sidebar').html());
 
                             $('body').waitForImages({
