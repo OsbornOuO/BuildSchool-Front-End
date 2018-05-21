@@ -387,16 +387,21 @@ CONTENT
   line-height: 70px;
 }
 
-.content .text-intro p {
+.content .text-intro p{
   font-size: 15px;
   color: #8d8d8d;
   margin-top: 30px;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 1px;
-  width: 40%;
+  width: 45%;
 }
-
+.content .text-intro li{
+  padding-left:10%;
+  font-size: 15px;
+  color: #8d8d8d;
+  width: 100%;
+}
 .typed-cursor {
   opacity: 1;
   font-weight: 900;
