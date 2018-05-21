@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        .floater {
+            float: left;
+            height: 50%;
+            margin-bottom: -200px;
+            width: 1px;
+            /* only for IE7 */
+        }
+
+        .middle {
+            clear: both;
+            height: 400px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <table class="table border">
+                    <thead>
+                        <tr class="text-center">
+                            <th>
+                                <input id="fuckrate" type="text" class="form-control" placeholder="年利率" aria-label="Username" aria-describedby="basic-addon1">
+                            </th>
+                            <th>
+                                <input id="fuckyear" type="text" class="form-control" placeholder="年" aria-label="Username" aria-describedby="basic-addon1">
+                            </th>
+                            <th>
+                                <input id="fuckmm" type="text" class="form-control" placeholder="貸款金額" aria-label="Username" aria-describedby="basic-addon1">
+                            </th>
+                            <th>
+                                <button id="fuckpush" type="button" class="btn btn-success">計算</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr class="text-left">
+                            <th>平均月繳 :
+                                <span id="OPMonth"></span>
+                            </th>
+                            <th>總共償還 :
+                                <span id="OPMoney"></span>
+
+                            </th>
+                            <th>總共利息 :
+                                <span id="OPRateMoney"></span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var ComputeRate = function (yrate, allyear, allmoney) {
+            var mrate = yrate / 12;
+            var amount = allmoney;
+            var mmonth = allyear * 12;
+            var _aRate = ((Math.pow(1 + mrate, mmonth)) * mrate) / ((Math.pow(1 + mrate, mmonth)) - 1);
+
+            this.getMonth = function () {
+                return Math.floor(amount * _aRate);
+            };
+            this.getTotalFinal = function () {
+                return Math.floor(this.getMonth() * mmonth);
+            };
+            this.getTotalRate = function () {
+                return Math.floor(this.getMonth() - amount / mmonth);
+            };
+        };
+        document.getElementById("fuckpush").onclick = function () {
+            var input = new ComputeRate(document.getElementById("fuckrate").value, document.getElementById("fuckyear").value, document.getElementById("fuckmm").value);
+            document.getElementById("OPMonth").innerText = input.getMonth();
+            document.getElementById("OPMoney").innerText = input.getTotalFinal();
+            document.getElementById("OPRateMoney").innerText = input.getTotalRate();
+        };
+    </script>
+</body>
+
+</html>
