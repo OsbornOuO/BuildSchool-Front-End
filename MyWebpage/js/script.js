@@ -85,11 +85,11 @@ $(function () {
         $('body').jKit();
         backgroundmenu();
         setTimeout(function () {
-            $(".preloader").fadeOut(500);
-        }, 2000);
+            $(".preloader").fadeOut(100);
+        }, 100);
         setTimeout(function () {
             $('header').fadeIn();
-        }, 500);
+        }, 100);
     }
 
 
@@ -181,7 +181,7 @@ $(function () {
                         loopCount: false,
                     });
                 }
-            }, 3000);
+            }, 500);
         });
     }
 
@@ -218,7 +218,7 @@ $(function () {
     function OpenCheck() {
         setTimeout(function () {
             hidePreloader();
-        }, 1000);
+        }, 500);
     }
 
 
@@ -242,7 +242,7 @@ $(function () {
     }
 
     function hidePreloader() {
-        $(".preloader").delay(2000).fadeOut("slow");
+        $(".preloader").delay(1000).fadeOut("slow");
     }
 
 
