@@ -13,7 +13,6 @@
         }
 
         body {
-            font-family: Microsoft JhengHei !important;
             box-sizing: border-box;
             background-color: rgba(255, 255, 255, 0) !important;
         }
@@ -41,6 +40,7 @@
             color: white;
             background: url("./img/portfolio.JPG") no-repeat center scroll;
             background-color: black;
+
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -62,24 +62,39 @@
         }
 
         .btn-default {
-            color: rgb(0, 0, 0);
-            border: 1px solid rgb(39, 128, 95);
-            background-color: #02cb71;
-            border-radius: 10px;
-
+            color: rgb(255, 255, 255);
+            background-color: #388659;
+            border-radius: 15px !important;
+            font-weight: bolder !important;
         }
-
 
         .btn-default:focus,
         .btn-default:hover {
             color: rgb(255, 255, 255);
-            border: 1px solid #42DCA3;
             outline: none;
             background-color: #00ac5e;
         }
 
+        .item-text {
+            font-size: 18px;
+        }
+
         ul {
             padding-left: 20px;
+        }
+
+        .item-text a {
+            font-weight: 650;
+            color: #00ac5e;
+        }
+
+        .item-text div b {
+            font-weight: 650;
+            color: #0084b8;
+        }
+
+        .item-text a:hover {
+            color: #00ac5e;
         }
     </style>
     <!-- Bootstrap CSS -->
@@ -89,7 +104,7 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body style="font-family: Microsoft JhengHei;">
 
     <div class="page" style=" margin-top:60px; box-sizing: 0,0,0,0.5; margin-bottom: 50px;">
         <div class="container item-page" style="background-color:white;">
@@ -129,9 +144,11 @@
                         大學的最後一年
                     </p>
                     <div class="mt-0 pt-0 ml-5 pb-5">
-                        參加了 Build-School訓練
+                        參加了
+                        <span style="color: #00ac5e">Build-School</span> 訓練
                         <a href="https://www.build-school.com/" style="font-size: 0.8em">(網站連結)</a>
-                        <br>使用 MVC 開發 B2C 的電子商務平台
+                        <br>使用
+                        <span style="color: #00ac5e"> MVC </span>開發 B2C 的電子商務平台
                         <a href="http://jujube.azurewebsites.net/" style="font-size: 0.8em">(網站連結)</a>
                         <br>使用
                         <span style="color: #00ac5e">職責分離</span>完成簡易的ＷindowForm 倉儲系統
@@ -268,60 +285,125 @@
                     </ul>
                 </div>
             </div>
-            <div class="row mgtop">
-                <div class="col">
-                    <h2 style="color:#d30000">
-                        <b>Experience</b>
-                    </h2>
+            <div class="container" style="margin: 0 ;padding: 0 ;font-family:Microsoft JhengHei;">
+                <div class="row mgtop">
+                    <div class="col">
+                        <h2 style="color:#d30000">
+                            <b>Experience</b>
+                        </h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-6">
-                            <h4>
-                                中華大學資訊工程學系
-                                <br>
-                                <i style="font-size:20px">2014-2018</i>
-                            </h4>
-                            <br>在學習時期了解到基本的程式語言的運作，包含C、C++、C#、x86 語法等語言，其多數課程中要求獨立解決程式問題，以及在限時時間內將程式專案完成。
-                        </div>
-                        <div class="col-6">
-                            <h4>
-                                Build-School 程式能力培訓
-                                <br>
-                                <i style="font-size:20px;">2018 2月 - 8月</i>
-                            </h4>
-                            <br>為了增加自身的程式能力，我參與了這次程式程式能力培訓，課程內容包含後端、前端、以及資料庫，其中課程為了模擬企業內部環境，課中、課後都含大量的實作練習，以及團隊合作開發。
-                            <div class="ml-5">
-                                <br> 實作內容 : .NET C# 軟體開發
-                                <br> HTML / CSS / BootStrap 網頁設計
-                                <br> JavaScript / JQuery 網頁程式設計
-                                <br> T-SQL 語法應用
-                            </div>
+                <div class="row mt-3">
+                    <div class="col-9 item-text pb-3">
+                        <h4>
+                            <b>
+                                <a href="https://www.build-school.com/"> Build-School</a>
+                            </b> 程式能力培訓
+                            <i style="font-size:20px;">2018 2-8</i>
+                        </h4>
+                        在畢業前更進一步的磨練自己的程式設計的能力，參與了這項Build-School的企業培訓計畫。在此課程中擔任助教，幫助同學能快速的理解上課的內容，幫助的同時也增進自己對相關課程的內容也更深入的了解。
+                        <div class="ml-5">
+                            <ul>
+                                <li>
+                                    .NET C# 軟體開發
+                                </li>
+                                <li>
+                                    HTML / CSS / BootStrap 網頁設計
+                                </li>
+                                <li>
+                                    JavaScript / JQuery 網頁程式設計
+                                </li>
+                                <li>
+                                    T-SQL 語法應用
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-6">
-                            <h4>
-                                B2C 電子商務網站
-                                <br>
-                                <i style="font-size:20px;">2018 5月 - 6月</i>
-                            </h4>
-                            組織團隊利用ASP.NET技術開發電子商務網站，在專案中擔任組長的位置，負責決策開發方向、分析要求、分配工作、解決團隊遇到的程式問題，以及大部分的後端程式開發與少量前端UI設計。
+                    <div class="col-3 text-center">
+                        <img class="pt-5" style="width: 200px" src="/img/build-school.png" alt="">
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-9 item-text pb-3">
+                        <h4>
+                            <b>MVC</b> B2C 電子商務網站
+                            <a href="https://jujube.azurewebsites.net/">JUJUBE</a>
+                            <i style="font-size:20px;">2018 5-6</i>
+                        </h4>
+                        在六人團隊開發中，擔任組長的位置。負責的事項有決策專案的走向、呈現方式、顧客要求、分配工作與解決團隊內遇到的程式設計的問題， 組織團隊利用ASP.NET技術開發電子商務網站，在專案中擔任組長的位置，負責決策開發方向、分析要求、分配工作、解決團隊遇到的程式問題，以及大部分的後端程式開發與少量前端UI設計。
+                        <br>
+
+                    </div>
+                    <div class="col-3 text-center ">
+                        <img class="pt-5" style="width: 200px;top:50%" src="/img/JUJUBE.png" alt="">
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-9 item-text pb-3">
+                        <h4>
+                            <b>大學專題</b>
+                            <a href="https://github.com/OsbornOuO/SDN"> 自動化防禦特定網域 </a>
+                            <i style="font-size:20px">2017.12</i>
+                        </h4>
+                        大學的畢業專題，題目為自動化防禦特定網域。
+                        <div class="ml-4" style="line-height: 170%;">
                             <br>
-                            <a href="https://jujube.azurewebsites.net/">JUJUBE shop</a>
-                        </div>
-                        <div class="col-6">
-                            <h4>
-                                Unity 大富翁
-                                <br>
-                                <i style="font-size:20px;">2016 8月 - 12月</i>
-                            </h4>
-                            在軟體工程的課程中，單人開發了小遊戲，以Unity平台做開發，語言用
+                            <b>研究動機 : </b>為了保護特定區域的網域
                             <br>
-                            <a href="https://www.youtube.com/watch?v=qqHMWXa1ev4&t=7s">影片連結</a>
+                            <b>研究方法 : </b>
+                            <ul style="margin: 0 20px;">
+                                <li>
+                                    可偵測網域的監控軟體
+                                </li>
+                                <li>
+                                    安裝支援OpenFlow的套件
+                                </li>
+                                <li>
+                                    安裝OpenDaylight當作Controller
+                                </li>
+                                <li>
+                                    了解OpenDaylight API
+                                </li>
+                            </ul>
+                            <b>研究結果 : </b>透過Switch上的mirroring port讓Snort能接收到所有封包，再透過Snort分析封包。若有攻擊行為發生時，傳送要求給Controller後，使Controller從Snort的資料庫新增該攻擊行為的Source
+                            IPv4。 OpenDaylight 透過OpenFlow的通訊協定傳送Flow給Open Vswitch，進而阻擋該攻擊行為的IPv4位置
                         </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-9 item-text pb-3">
+                        <h4>
+                            <b> Python</b>
+                            <a href="https://github.com/OsbornOuO/Python-food-Scapying"> 美食網分析-台北地區</a>
+                            <i style="font-size:20px">2017 4</i>
+                        </h4>
+                        為了快速熟悉Python的使用方法，選擇了爬取網頁資料當作自我訓練的題材，在這個題目當中了解 Request(GET) 的使用方式以及 BeautifulSoup查詢標記語言，取得標記以下的內容
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-8 item-text pb-3">
+                        <h4>
+                            <b> Unity</b>
+                            <a href="https://github.com/OsbornOuO/Unity-3D-Monopoly-Game">移動迷宮-大富翁</a>
+                            <i style="font-size:20px;">2016 8-12</i>
+                        </h4>
+                        在軟體工程的課程中，製作了大富翁的遊戲用Unity3D開發，介面設計是由illustrator去製作的，人物角色以及動畫使用
+                        <a href="https://www.mixamo.com/#/">Mixamo</a>內的現成角色
+                        <br>
+                        <a href="https://www.youtube.com/watch?v=qqHMWXa1ev4&t=7s">影片連結</a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-9 item-text pb-3">
+                        <h3>
+                            <b>中華大學</b> 資訊工程學系
+                            <i style="font-size:20px">2014.9-2018.6</i>
+                        </h3>
+                        在學習時期了解到基本的程式語言的運作，包含C、C++、C#、x86 語法等語言，其多數課程中要求獨立解決程式問題，以及在最短時間內將各項作業完成。 因為組合語言以及編譯器課程讓瞭解到程式的運行方式，也從這時候開始會找尋程式運作時的相關問題。
+                        <br>大四擔任過物聯網通信協議與離散數學的助教
+                    </div>
+                    <div class="col-3 text-center">
+                        <img src="http://www.chu.edu.tw/ezfiles/0/1000/style/5034/images/foot_logo.png" alt="">
                     </div>
                 </div>
             </div>
@@ -332,11 +414,12 @@
                     </h2>
                 </div>
             </div>
-            <section id="download" class="download-section content-section text-center mt-3" style="border-radius: 30px;">
-                <div class="container">
-                    <a href="http://osborn.azurewebsites.net/%E4%BD%9C%E5%93%81%E9%9B%86/" class="btn btn-default btn-lg mx-auto" style="font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;">VISIT PORFOLIO PAGE</a>
+            <div class="row mt-3">
+                <div class="col-12" style="position: relative;">
+                    <img style="max-width: 100%; border-radius: 30px;-webkit-filter: blur(3px);" src="/img/portfolio.JPG" alt="">
+                    <a style="position: absolute ;left: 35% ; top: 70%;" href="https://osborn.azurewebsites.net/mywebpage/" class="btn btn-default btn-lg mx-auto">VISIT PORFOLIO PAGE</a>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
     <!-- Optional JavaScript -->
